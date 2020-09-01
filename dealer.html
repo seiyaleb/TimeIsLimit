@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>dealer</title>
+<!-- BootstrapのCSS読み込み -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!-- jQuery読み込み -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- BootstrapのJS読み込み -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style>
+  body {background-color: black;}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="jumbotron">
+  <h1>【ディーラーさん（コンピューター上）のターン】</h1><br>
+  <h3>ディーラーさんが現在自身のターンの動き方を必死で考え、行動しています。</h3><br><br>
+  
+  <form action="/player" method="POST">
+    <button type="submit" class="btn btn-danger">プレイヤーのあなたのターンへ</button>
+  </form><br>
+  
+  <form action="/explanation" method="GET">
+    <button type="submit" class="btn btn-danger">ルール説明へ戻る</button>
+  </form>
+</div>
+</div>
+</body>
+</html>

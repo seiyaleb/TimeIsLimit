@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- BootstrapのCSS読み込み -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!-- jQuery読み込み -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- BootstrapのJS読み込み -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style>
+.row-eq-height {display: flex; flex-wrap: wrap;}
+</style>
+<title>検索結果ページ</title>
+</head>
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand navbar-dark" href="/">TimeIsLimit</a>
+        <small class="navbar-text">時間を超えていくwebアプリ</small>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">about</a></li>
+		<li><a href="/contact">contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <div class="container">
+    <h1 th:text="${placeText}"></h1>
+    <div class="row row-eq-height">
+    <div class="col-sm-4" th:each="obj: ${cafeList}">
+      <div class="jumbotron">
+        <a th:href="@{'/detailresult/' + ${obj.shopID}}">
+          <img th:src="${obj.image1}">
+          <h3 th:text="${obj.name}"></h3>
+        </a>
+        <p th:text="|${obj.station}から徒歩${obj.walk}分|"></p>
+      </div>
+    </div>
+    </div>
+  </div><br>
+  
+  <footer class="navbar navbar-default">
+    <a class="navbar-brand" href="/">TimeIsLimit</a>
+    <small class="navbar-text">時間を超えていくwebアプリ</small>
+  </footer>
+</body>
+</html>

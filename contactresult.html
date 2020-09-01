@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- BootstrapのCSS読み込み -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!-- jQuery読み込み -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- BootstrapのJS読み込み -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<title>contact結果ページ</title>
+</head>
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand navbar-dark" href="/">TimeIsLimit</a>
+        <small class="navbar-text">時間を超えていくwebアプリ</small>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">about</a></li>
+		<li><a href="/contact">contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <div class="container">
+    <h1>contact(完了)</h1>
+    <h3>送信が完了しました。</h3>
+    <p>頂いたお問い合わせは、入力して頂いたメールアドレスにてご回答させていただくことになります。</p><br>
+    <p>反映するまでに少々お時間を頂く場合がございますので、あらかじめご了承ください。</p><br>
+    <p>今後ともTimeIsLimitを宜しくお願いいたします。</p><br>
+    <hr>
+    <p>送信されたお問い合わせの詳細は以下をご覧下さい。</p>
+    <div class="table-responsive">
+    <table class="table table-bordered" th:object="${contactData}">
+      <tr>
+        <th>お名前：</th>
+        <td th:text="*{name}"></td>
+      </tr>
+      <tr>
+        <th>メールアドレス：</th>
+        <td th:text="*{mail}"></td>
+      </tr>
+      <tr>
+        <th>内容：</th>
+        <td th:text="*{context}"></td>
+      </tr>
+      <tr>
+        <th>お問い合わせ日時：</th>
+        <td th:text="*{day}"></td>
+      </tr>
+    </table>
+    </div>
+  </div><br>
+  
+  <footer class="navbar navbar-default">
+    <a class="navbar-brand" href="/">TimeIsLimit</a>
+    <small class="navbar-text">時間を超えていくwebアプリ</small>
+  </footer>
+</body>
+</html>

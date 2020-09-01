@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- BootstrapのCSS読み込み -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!-- jQuery読み込み -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- BootstrapのJS読み込み -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<title>top page</title>
+</head>
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand navbar-dark" href="/">TimeIsLimit</a>
+        <small class="navbar-text">時間を超えていくwebアプリ</small>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">about</a></li>
+		<li><a href="/contact">contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <div class="container">
+  　  <section id="center">
+     <h1>スピードにコミットするソリューション</h1>
+     <p>あなたが探したい住所周辺のWi-Fiと電源ありのカフェ探します。</p>
+     <form action="/searchresult" method="get">
+      <input type="text" name="place" th:value="${place}">
+      <input type="submit" value="検索">
+     </form>
+   </section>
+   <section id="map">
+     <h3>住所が分からない場合、Googleマップを活用しよう</h3>
+     <iframe src="https://maps.google.co.jp/maps?output=embed" width="630" height="350"></iframe>
+   </section>
+   <hr>
+   <section id="detail">
+   <h3>最近検索されたカフェ一覧</h3>
+   <div class="table-responsive">
+   <table class="table table-bordered">
+   <thead class="thead-lignt">
+     <tr>
+       <th>店名</th>
+       <th>住所</th>
+       <th>アクセス(最寄り駅/徒歩時間)</th>
+       <th>電話番号</th>
+       <th>営業日</th>
+       <th>休業日</th>
+       <th>HP</th>
+     </tr>
+   </thead>
+     <tr th:each="obj: ${detailList}">
+       <td th:text="${obj.name}"></td>
+       <td th:text="${obj.address}"></td>
+       <td th:text="|${obj.station}　${obj.walk}|"></td>
+       <td th:text="${obj.tel}"></td>
+       <td th:text="${obj.businessDay}"></td>
+       <td th:text="${obj.holiday}"></td>
+       <td th:text="${obj.hp}"></td>
+     </tr>
+   </table>
+   </div>
+   </section>
+   <hr>
+   <section id="sub">
+     <h3>人生における時間を効率化して生活しよう！</h3>
+     <img src="https://pbs.twimg.com/media/EIgtkfRVUAQ9U84?format=jpg">
+   </section>
+  </div><br>
+  
+  <footer class="navbar navbar-default">
+    <a class="navbar-brand" href="/">TimeIsLimit</a>
+    <small class="navbar-text">時間を超えていくwebアプリ</small>
+  </footer>
+</body>
+</html>

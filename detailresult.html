@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- BootstrapのCSS読み込み -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!-- jQuery読み込み -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- BootstrapのJS読み込み -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<title>詳細ページ</title>
+</head>
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand navbar-dark" href="/">TimeIsLimit</a>
+        <small class="navbar-text">時間を超えていくwebアプリ</small>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">about</a></li>
+		<li><a href="/contact">contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <div class="container" th:object="${object}">
+    <h1 th:text="*{name}"></h1>
+    <img th:src="*{image1}">
+    <img th:src="*{image2}">
+    <section id="detail">
+      <h3>詳細情報</h3>
+      <div class="table-responsive">
+      <table class="table table-bordered">
+        <tr>
+          <th>店名</th>
+          <td th:text="*{name}"></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td th:text="*{address}"></td>
+        </tr>
+        <tr>
+          <th>アクセス</th>
+          <td th:text="|*{station}から徒歩*{walk}分|"></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td th:text="*{tel}"></td>
+        </tr>
+        <tr>
+          <th>営業日</th>
+          <td th:text="*{businessDay}"></td>
+        </tr>
+        <tr>
+          <th>休業日</th>
+          <td th:text="*{holiday}"></td>
+        </tr>
+        <tr>
+          <th>HP</th>
+          <td th:text="*{hp}"></td>
+        </tr>
+      </table>
+      </div>
+    </section>
+    <section id="reviews">
+      <h3>口コミ情報</h3>
+      <div class="table-responsive">
+      <table class="table table-bordered">
+      <thead class="thead-lignt">
+    　　　　　　 <tr>
+          <th>総合評価</th>
+          <th>コメント</th>
+        </tr>
+      </thead>
+        <tr th:each="obj: ${reviewList}">
+          <td th:text="${obj.total_score}"></td>
+          <td th:text="${obj.comment}"></td>
+        </tr>
+      </table>
+      </div>
+    </section>
+    <section id="map">
+      <h3>地図</h3>
+      <iframe th:src="${mapURL}" width="630" height="350"></iframe>
+    </section><br>
+    <p><a href="/searchresult/2">検索一覧に戻る</a></p><br>
+  </div>
+  
+  <footer class="navbar navbar-default">
+    <a class="navbar-brand" href="/">TimeIsLimit</a>
+    <small class="navbar-text">時間を超えていくwebアプリ</small>
+  </footer>
+</body>
+</html>
